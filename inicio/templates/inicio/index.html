@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_head %}
+Inicio
+{% endblock title_head %}
+
+{% block menu %}
+    <li class="active"><a href={% url "inicio:inicio" %}>INICIO</a></li>
+    <li><a href={% url "inicio:blog" %}>Blog</a></li>
+    <li><a href={% url "inicio:edicion" %}>Edicion</a></li>
+    <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>
+{% endblock menu %}
+
+{% block main %}
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hero__item set-bg" data-setbg={% static "img/hero/banner.jpg" %}>
+                    <div class="hero__text">
+                        <span>BIENVENIDOS</span>
+                        <h2>Les tenemos Tips<br /> Productos y más...</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+{% endblock main %}
