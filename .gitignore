@@ -9,6 +9,7 @@ __pycache__/
 configuración_local.py
 base de datos sqlite3
 diario db.sqlite3
+*.sqlite3
 medios de comunicación
 
 # Si su proceso de compilación incluye ejecutar collectstatic, entonces probablemente no necesite ni desee incluir staticfiles/
