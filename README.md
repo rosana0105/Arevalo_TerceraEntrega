@@ -7,6 +7,6 @@ con 4 vistas, que son:
 - Inicio: La carta de presentación de la pagina. Mostrara la propuesta 
   de valor.
 - Blog: Contedra toda la información clasificada por temas y categorias.
-- Edicion: Aqui se ingresa data, a traves de un formulario, la cual se
+- Edicion: Aqui se ingresa data, a través de un formulario, el cual se
   mostrara en la vista Blog.
-- Acerca de mi: Contedra información respecto al autor de la pagina.
+- Acerca de mi: Contendra información respecto al autor de la página.
