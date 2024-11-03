@@ -295,8 +295,8 @@ comprobación automática de pip.json
 .historia
 .ionuro
 # Ignorar todo en la carpeta media
-media/*
+/media/*
 # Exceptuar default.jpg
-!media/avatares/default.jpg
+!/media/avatares/default.jpg
 
 # Fin de https://www.toptal.com/developers/gitignore/api/django,python,virtualenv,visualstudiocode
