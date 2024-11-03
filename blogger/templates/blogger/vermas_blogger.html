@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_head %}
+Blog
+{% endblock title_head %}
+
+{% block menu %}
+    <li><a href={% url "inicio:inicio" %}>INICIO</a></li>
+    <li class="active"><a href={% url "inicio:blog" %}>Blog</a></li>
+    <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>
+    <li><a href={% url "blogger:listado_blogger" %}>ADMINISTRACION</a></li>
+{% endblock menu %}
+
+{% block main %}
+    <!-- Blog Details Hero Begin -->
+    
+    <section class="blog-details-hero set-bg" data-setbg={% static "img/blog/details/details-hero.jpg" %}>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog__details__hero__text">
+                        <h2>{{blogger.titulo}}</h2>
+                        <ul>
+                            <li>By {{blogger.autor}}</li>
+                            <li>{{blogger.fecha}}</li>
+                            <li>{{blogger.categoria}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Hero End -->
+     <!-- Blog Details Section Begin -->
+    <section class="blog-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-5 order-md-1 order-2">
+                    <div class="blog__sidebar">
+                        <div class="blog__sidebar__item">
+                            <h4>Panel de Discucion</h4>
+                            
+                            <form action={% url "chat:crear_chat" blogger.id  %} method="POST">{% csrf_token %}
+                                {{form.comentario}}
+                                <button type="submit"> AÑADIR <span class="icon_plus"></span></button>
+                            </form>
+                            <br>
+                            <div class="blog__sidebar__recent">
+                            {% if chats %}
+                                {% for chat in chats %}
+                                <a href="#" class="blog__sidebar__recent__item">
+                                    <div class="blog__sidebar__recent__item__pic">
+                                        <img src={{ chat.imagen }} alt="" height="70px">
+                                    </div>
+                                    <div class="blog__sidebar__recent__item__text">
+                                        <span>{{ chat.username }}:</span>
+                                        <h6>{{ chat.comentario }}:</h6>
+                                        <span>{{ chat.fecha }}</span>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            {% else %}
+                            <p>No hay Comentarios registrados.</p>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7 order-md-1 order-1">
+                    <div class="blog__details__text">
+                        
+                        <p>{{blogger.descripcion}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <img src={{blogger.image_blog.url}} alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Section End -->
+{% endblock main %}
