@@ -8,7 +8,7 @@ Edicion
 {% block menu %}
     <li><a href={% url "inicio:inicio" %}>INICIO</a></li>
     <li><a href={% url "inicio:blog" %}>Blog</a></li>
-    <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>
+    <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>   
     <li><a href={% url "blogger:listado_blogger" %}>ADMINISTRACION</a></li>
 {% endblock menu %}
 
@@ -20,10 +20,10 @@ Edicion
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Edicion</h2>
+                        <h2>Iniciar Sesion</h2>
                         <div class="breadcrumb__option">
                             <a href={% url "inicio:inicio" %}>Inicio</a>
-                            <span>Edicion</span>
+                            <span>Iniciar Sesion</span>
                         </div>
                     </div>
                 </div>
@@ -34,14 +34,13 @@ Edicion
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action={% url "inicio:edicion"  %} method="POST">
+                <form action={% url "usuarios:login" %} method="POST">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-3 col-md-3"></div>
                         <div class="col-lg-6 col-md-6">
                             
                             <div class="checkout__order">
-                                <h4>Nuevo Articulo</h4>
                                 <div class="row">
                                     <div class="col-lg-6">
                                     </div>
@@ -49,25 +48,14 @@ Edicion
                                     </div>
                                 </div>
                                 <div class="checkout__input">
-                                    <p>Título<span>*</span></p>
-                                    {{form.titulo}}
+                                    <p>Usuario<span>*</span></p>
+                                    {{form.username}}
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Categoria<span>*</span></p>
-                                            {{form.categoria}}
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p>Año de publicación<span>*</span></p>
-                                            {{form.anio}}
-                                        </div>
-                                    </div>
+                                <div class="checkout__input">
+                                    <p>Contraseña<span>*</span></p>
+                                    {{form.password}}
                                 </div>
-
-                                <button type="submit" class="site-btn">ENVIAR</button>
+                                <button type="submit" class="site-btn">INICIAR SESION</button>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3"></div>

@@ -8,8 +8,8 @@ Blog
 {% block menu %}
     <li><a href={% url "inicio:inicio" %}>INICIO</a></li>
     <li class="active"><a href={% url "inicio:blog" %}>Blog</a></li>
-    <li><a href={% url "inicio:edicion" %}>Edicion</a></li>
     <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>
+    <li><a href={% url "blogger:listado_blogger" %}>ADMINISTRACION</a></li>
 {% endblock menu %}
 
 {% block main %}
@@ -77,16 +77,16 @@ Blog
                                 <div class="col-lg-4 col-md-4 col-sm-4">
                                     <div class="blog__item">
                                         <div class="blog__item__pic">
-                                            <img src={% static "img/blog/blog-2.jpg" %} alt="">
+                                            <img src={{blog.image_blog.url}} alt="">
                                         </div>
                                         <div class="blog__item__text">
                                             <ul>
-                                                <li><i class="fa fa-calendar-o"></i> {{blog.anio}}</li>
+                                                <li><i class="fa fa-calendar-o"></i> {{blog.fecha}}</li>
                                                 <!--li><i class="fa fa-comment-o"></i> 5</li-->
                                             </ul>
                                             <h5><a href="#">{{blog.titulo}}</a></h5>
                                             <p>{{blog.categoria}}</p>
-                                            
+                                            <a href={% url "blogger:vermas_blogger" blog.id %} class="blog__btn">VER MAS <span class="arrow_right"></span></a>
                                         </div>
                                     </div>
                                 </div>

@@ -8,8 +8,8 @@ Edicion
 {% block menu %}
     <li><a href={% url "inicio:inicio" %}>INICIO</a></li>
     <li><a href={% url "inicio:blog" %}>Blog</a></li>
-    <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>
-    <li><a href={% url "blogger:listado_blogger" %}>ADMINISTRACION</a></li>
+    <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>   
+    <li class="active"><a href={% url "blogger:listado_blogger" %}>ADMINISTRACION</a></li>
 {% endblock menu %}
 
 {% block main %}
@@ -20,10 +20,10 @@ Edicion
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Edicion</h2>
+                        <h2>Administracion de Blogs</h2>
                         <div class="breadcrumb__option">
-                            <a href={% url "inicio:inicio" %}>Inicio</a>
-                            <span>Edicion</span>
+                            <a href={% url "blogger:listado_blogger" %}>Inicio</a>
+                            <span>Administracion de Blogs</span>
                         </div>
                     </div>
                 </div>
@@ -34,14 +34,14 @@ Edicion
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action={% url "inicio:edicion"  %} method="POST">
+                <form action={% url "blogger:editar_blogger" blogger.id  %} method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-3 col-md-3"></div>
                         <div class="col-lg-6 col-md-6">
                             
                             <div class="checkout__order">
-                                <h4>Nuevo Articulo</h4>
+                                <h4>Nuevo Blog</h4>
                                 <div class="row">
                                     <div class="col-lg-6">
                                     </div>
@@ -61,13 +61,28 @@ Edicion
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="checkout__input">
-                                            <p>Año de publicación<span>*</span></p>
-                                            {{form.anio}}
+                                            <p>Fecha de publicación<span>*</span></p>
+                                            {{form.fecha}}
                                         </div>
                                     </div>
+                                    
                                 </div>
 
-                                <button type="submit" class="site-btn">ENVIAR</button>
+                                <div class="checkout__input">
+                                    <p>Descripcion<span>*</span></p>
+                                    {{form.descripcion}}
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Autor<span>*</span></p>
+                                    {{form.autor}}
+                                </div>
+
+                                <div class="checkout__input">
+                                    <p>Imagen<span>*</span></p>
+                                    {{form.image_blog}}
+                                </div>
+
+                                <button type="submit" class="site-btn">EDITAR BLOG</button>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3"></div>

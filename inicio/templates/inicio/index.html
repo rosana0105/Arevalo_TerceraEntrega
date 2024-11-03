@@ -8,8 +8,8 @@ Inicio
 {% block menu %}
     <li class="active"><a href={% url "inicio:inicio" %}>INICIO</a></li>
     <li><a href={% url "inicio:blog" %}>Blog</a></li>
-    <li><a href={% url "inicio:edicion" %}>Edicion</a></li>
     <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>
+    <li><a href={% url "blogger:listado_blogger" %}>ADMINISTRACION</a></li>
 {% endblock menu %}
 
 {% block main %}

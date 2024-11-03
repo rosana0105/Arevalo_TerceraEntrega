@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_head %}
+Edicion
+{% endblock title_head %}
+
+{% block menu %}
+    <li><a href={% url "inicio:inicio" %}>INICIO</a></li>
+    <li><a href={% url "inicio:blog" %}>Blog</a></li>
+    <li><a href={% url "inicio:acerca_de_mi" %}>Acerca de mi</a></li>   
+    <li class="active"><a href={% url "blogger:listado_blogger" %}>ADMINISTRACION</a></li>
+{% endblock menu %}
+
+{% block main %}
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg={% static "img/breadcrumb.jpg" %}>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Administracion de Blogs</h2>
+                        <div class="breadcrumb__option">
+                            <a href={% url "blogger:listado_blogger" %}>Inicio</a>
+                            <span>Administracion de Blogs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action={% url "blogger:eliminar_blogger" blogger.id  %} method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3"></div>
+                        <div class="col-lg-6 col-md-6">
+                            
+                            <div class="checkout__order">
+                                <h4>¿Desea eliminar {{blogger.titulo}}?</h4>
+
+                                <button type="submit" class="site-btn">CONFIRMAR</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock main %}

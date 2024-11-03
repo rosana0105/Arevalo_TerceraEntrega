@@ -31,14 +31,58 @@
 
     </head>
     <body>
-        <!-- Page Preloder -->
-        <div id="preloder">
-            <div class="loader"></div>
-        </div>
 
         <!-- Header Section Begin -->
         
         <header class="header">
+            <div class="header__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="header__top__left">
+                                <ul>
+                                    <li><i class="fa fa-envelope"></i> ogani@gmail.com</li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="header__top__right">
+                                <div class="header__top__right__social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                                </div>
+                                {% if request.user.is_authenticated %}
+                                {% else %}
+                                <div class="header__top__right__language">
+                                    <div><a href={% url "usuarios:register" %}>Registrarse</a></div>
+                    
+                                </div>
+                                {% endif %}
+                                <div class="header__top__right__language">
+                                    {% if request.user.is_authenticated %}
+                                    <i class="fa fa-user"></i> {{request.user.username}} <span class="arrow_carrot-down"></span>
+                                    <ul>
+                                            <li><a href={% url "usuarios:ver_perfil" %}>Ver Perfil</a></li>  
+                                            <li>
+                                                <form action={% url "usuarios:logout" %} method="post">{% csrf_token %}
+                                                    <button type="submit">Cerrar Sesion</button>
+                                                </form>
+                                            </li>
+                                        
+                                        
+                                    </ul>
+                                    {% else %}
+                                    <div><a href={% url "usuarios:login" %}>Login</a></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3">
