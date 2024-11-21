@@ -15,6 +15,10 @@ def login(request):
         if formulario.is_valid():
             usuario = formulario.get_user()
             django_login(request, usuario)
+            DatosAdicionales.objects.get_or_create(
+                user=usuario,
+                fecha_nacimiento='1900-01-01'
+            )
             return redirect('inicio:inicio')
         
     return render(request, 'usuarios/login.html', {'form': formulario})
